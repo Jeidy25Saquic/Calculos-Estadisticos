@@ -48,10 +48,15 @@ class Program
                         Console.Clear();
                         break;
                     case 3:
-                        Console.WriteLine("Moda");
+                        Console.WriteLine("------------------------->Moda<-------------------");
+                        numeracion.CantidadDeNumeros();
+                        Console.WriteLine("El resultado de la mediana es: " + calculadora.CalcularModa(listaNumeros));
+                        Console.ReadKey();
+                        Console.Clear();
+
                         break;
                     case 4:
-                        Console.WriteLine("------------------------->Mediana<-------------------");
+                        Console.WriteLine("------------------------->Desviacion Estandar<-------------------");
                         numeracion.CantidadDeNumeros();
                         Console.WriteLine("El resultado de la desviasion estandar es: " + calculadora.CalcularDesviacionEstandar(listaNumeros));
                         Console.ReadKey();
