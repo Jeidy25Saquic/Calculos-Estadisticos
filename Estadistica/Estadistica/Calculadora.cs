@@ -60,7 +60,7 @@ namespace Estadistica
             foreach (double numero in numeros)
             {
                 double diferencia = numero - CalcularMedia(numeros);
-           sumaDiferenciasCuadrados = sumaDiferenciasCuadrados+(diferencia * diferencia);
+                sumaDiferenciasCuadrados = sumaDiferenciasCuadrados + (diferencia * diferencia);
             }
 
             // Calcula la desviación estándar
@@ -68,6 +68,49 @@ namespace Estadistica
             return DesviacionEstandar;
 
         }
+        public double CalcularModa(List<double> numeros)
+        {
+            // Ordenar la lista de números
+            numeros.Sort();
 
+            double moda = numeros[0]; // Supongamos que el primer número es la moda inicial
+            int maxConteo = 1; // Conteo inicial
+
+            int conteoActual = 1; // Conteo para el número actual
+            for (int i = 1; i < numeros.Count; i++)
+            {
+                if (numeros[i] == numeros[i - 1])
+                {
+                    // Si el número actual es igual al anterior, incrementar el conteo
+                    conteoActual++;
+                }
+                else
+                {
+                    // Si no, verificar si es la nueva moda
+                    if (conteoActual > maxConteo)
+                    {
+                        maxConteo = conteoActual;
+                        moda = numeros[i - 1];
+                    }
+
+                    // Restablecer el conteo para el nuevo número
+                    conteoActual = 1;
+                }
+            }
+
+            // Verificar si el último número es la moda
+            if (conteoActual > maxConteo)
+            {
+                moda = numeros[numeros.Count - 1];
+            }
+
+
+            return moda;
+
+
+        }
     }
 }
+
+
+       
