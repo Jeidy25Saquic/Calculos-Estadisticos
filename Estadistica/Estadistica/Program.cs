@@ -1,22 +1,23 @@
 ﻿using Estadistica;
+using System.Security.Cryptography.X509Certificates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Banco;
 class Program
 {
 
     static void Main(string[] args)
-    {  
-        bool continuar=true;
-        Calculadora calculadora = new Calculadora();
-        Numeros numeracion = new Numeros();
-        List<double> listaNumeros = Numeros.numeros;
+    {
+        bool continuar = true;
+        List<double> listaNumeros = new List<double>();
+        Calculadora calculadora = new Calculadora(listaNumeros);
+
+
         do
         {
-           
+
             try
             {
-                
-                listaNumeros.Clear();
+
                 Console.WriteLine("\nMenú:");
                 Console.WriteLine("1. Calcular media");
                 Console.WriteLine("2. Calcular mediana");
@@ -25,50 +26,50 @@ class Program
                 Console.WriteLine("5. Salir");
                 Console.Write("Selecciona una opción: ");
 
-                int  opcion = Convert.ToInt32(Console.ReadLine());
+                int opcion = Convert.ToInt32(Console.ReadLine());
                 Console.Clear();
 
                 Console.WriteLine("\n");
                 switch (opcion)
                 {
                     case 1:
-                       
-                        Console.WriteLine("------------------------->Media<-------------------");
-                        numeracion.CantidadDeNumeros();
-                        Console.WriteLine("El resultado de la media es: " + calculadora.CalcularMedia(listaNumeros));
 
+                        Console.WriteLine("------------------------->Media<-------------------");
+                        calculadora.CantidadDeNumeros();
+                        Console.WriteLine("El resultado de la media es: " + calculadora.CalcularMedia());
                         Console.ReadKey();
                         Console.Clear();
                         break;
                     case 2:
                         Console.WriteLine("------------------------->Mediana<-------------------");
-                        numeracion.CantidadDeNumeros();
-                        Console.WriteLine("El resultado de la mediana es: " + calculadora.CalcularMediana(listaNumeros));
+                        calculadora.CantidadDeNumeros();
+                        Console.WriteLine("El resultado de la mediana es: " + calculadora.CalcularMediana());
                         Console.ReadKey();
                         Console.Clear();
                         break;
                     case 3:
                         Console.WriteLine("------------------------->Moda<-------------------");
-                        numeracion.CantidadDeNumeros();
-                        Console.WriteLine("El resultado de la mediana es: " + calculadora.CalcularModa(listaNumeros));
+                        calculadora.CantidadDeNumeros();
+                        Console.WriteLine("El resultado de la moda es: " + calculadora.CalcularModa());
                         Console.ReadKey();
                         Console.Clear();
 
                         break;
                     case 4:
                         Console.WriteLine("------------------------->Desviacion Estandar<-------------------");
-                        numeracion.CantidadDeNumeros();
-                        Console.WriteLine("El resultado de la desviasion estandar es: " + calculadora.CalcularDesviacionEstandar(listaNumeros));
+                        calculadora.CantidadDeNumeros();
+                        Console.WriteLine("El resultado de la desviasion estandar es: " + calculadora.CalcularDesviacionEstandar());
                         Console.ReadKey();
                         Console.Clear();
                         break;
                     case 5:
                         Console.WriteLine(" Ha salido, vuelva pronto...");
+                        Console.ReadKey();
                         continuar = false;
                         break;
                     default:
                         Console.WriteLine("Opción no válida. Inténtalo de nuevo.");
-                      
+
                         break;
                 }
 
@@ -81,8 +82,8 @@ class Program
                 Console.Clear();
             }
 
-        } while(continuar==true);
-       
-       
+        } while (continuar == true);
+
+
     }
 }
