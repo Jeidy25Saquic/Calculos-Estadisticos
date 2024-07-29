@@ -29,6 +29,7 @@ namespace Estadistica
 
                     ListaDeNumeros(cantidad);
                     continuar = false;
+
                 }
                 catch (Exception ex)
                 {
